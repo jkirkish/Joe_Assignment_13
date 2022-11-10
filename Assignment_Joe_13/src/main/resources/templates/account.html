@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Accounts</title>
+	</head>
+	<body>
+		<h1>Accounts</h1>
+		<div th:if="${#lists.size(accounts) == 1}">
+		<form action="" method="post">
+			<input type="hidden" th:field="${account.accountId}"/>
+			<div>
+				Account: <input type="text" th:field="${account.accountName}" />
+			</div>
+			<div th:each="account : ${user.accounts}">
+				<a th:href="@{/users/{userId}/accounts/{accountId}(userId=${user.userId},accountId=${account.accountId})}" th:text="${account.transactions}"></a>
+			</div>	
+		</form>
+		
+	</body>
+</html>
